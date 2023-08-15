@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import ImagenReact from './imagen';
+import { useState } from 'react';
+import DataPerros from './assets/data';
+import Button from './button';
 
 function App() {
+
+  const [estado, setEstado] = useState({
+    imagen: "https://www.nationalgeographic.com.es/medio/2023/04/21/boyero-de-berna-1_10a9bb99_230421205529_800x800.jpg",
+    texto: "perrito",
+    posicion: null
+  });
+
+  const getValor = (value) => {
+    setEstado({...DataPerros[value], posicion: value});
+    // setEstado((prevState) => {
+    //   console.log("prevState", prevState)
+    //   return {...value};
+    // });
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ImagenReact className="contenedorImagen" imagen={estado.imagen} texto={estado.texto} posicion={estado.posicion} />
+      <Button getValue={getValor} />
     </div>
   );
 }
