@@ -9,7 +9,7 @@ function App() {
   const [estado, setEstado] = useState({
     imagen: "https://www.nationalgeographic.com.es/medio/2023/04/21/boyero-de-berna-1_10a9bb99_230421205529_800x800.jpg",
     texto: "perrito",
-    posicion: null
+    posicion: "default"
   });
 
   const getValor = (value) => {
@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="App">
       <ImagenReact className="contenedorImagen" imagen={estado.imagen} texto={estado.texto} posicion={estado.posicion} />
-      <Button getValue={getValor} />
+      <Button max={DataPerros.length} getValue={getValor} />
     </div>
   );
 }

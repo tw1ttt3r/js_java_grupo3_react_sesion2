@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
+import './imagen.css';
 
 function ImagenReact(props) {
 
   const [estado, setEstado] = useState({});
 
   useEffect(() => {
-    setEstado({ default: 1 });
+    setEstado({ [props.posicion]: 1 });
   }, []); // cuando llega
 
   useEffect(() => {
@@ -21,7 +22,7 @@ function ImagenReact(props) {
 
   return (
     <div className={props.className}>
-      <img onClick={handleClick} src={props.imagen} alt={props.texto} />
+      <img className="imageInContenedor" onClick={handleClick} src={props.imagen} alt={props.texto} />
       <p>Visualizacion: {estado[`imagen${props.posicion}`]}</p>
     </div>
   )
